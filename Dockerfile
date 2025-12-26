@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy manifest files
 COPY Cargo.toml ./
-COPY Cargo.lock* ./
+# Note: Cargo.lock will be generated automatically during build if it doesn't exist
 
 # Copy source code
 COPY main.rs ./

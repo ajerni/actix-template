@@ -4,12 +4,38 @@ This template provides a ready-to-use Docker Compose setup for a Rust Actix Web 
 
 ## Quick Start
 
-1. Build and run the container:
+### Automated Setup (Recommended)
+
+1. **Copy this template** to a new directory for your project:
+   ```bash
+   cp -r actix-template my-new-project
+   cd my-new-project
+   ```
+
+2. Run the setup script to configure your project:
+   ```bash
+   ./setup-project.sh
+   ```
+   The script will ask for:
+   - Project name (e.g., `my-api`, `user-service`)
+   - Host port (default: 8083)
+   - Domain (default: `{project-name}.ernilabs.com`)
+
+   It will automatically update:
+   - `docker-compose.yml` (service name, container name, port, domain, Traefik labels)
+   - `Cargo.toml` (package name and binary name)
+   - `Dockerfile` (binary references)
+
+3. Build and run the container:
    ```bash
    docker-compose up --build
    ```
 
-2. The server will be available at your configured domain through Traefik with TLS.
+4. The server will be available at your configured domain through Traefik with TLS.
+
+### Manual Setup
+
+If you prefer to customize manually, see the "Customizing for New Projects" section below.
 
 ## Customizing for New Projects
 
@@ -52,6 +78,7 @@ When creating a new project from this template, you need to update the following
 ├── Dockerfile            # Multi-stage build for Rust application
 ├── Cargo.toml           # Rust project dependencies
 ├── main.rs              # Your Actix Web application code
+├── setup-project.sh     # Automated project setup script
 └── README.md            # This file
 ```
 
