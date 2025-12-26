@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  actix-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: actix_server
+    restart: always
+    ports:
+      - "8083:8080"
+    networks:
+      - iotnetwork
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.actix-server.rule=Host(`actix.ernilabs.com`)
+      - traefik.http.routers.actix-server.tls=true
+      - traefik.http.routers.actix-server.tls.certresolver=lets-encrypt
+      - traefik.http.services.actix-server.loadbalancer.server.port=8080
+
+networks:
+  iotnetwork:
+    external: true
+
