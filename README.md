@@ -55,6 +55,23 @@ When creating a new project from this template, you need to update the following
 └── README.md            # This file
 ```
 
+## Example Routes
+
+The template includes 3 example routes to get you started:
+
+1. **GET /** - Root endpoint
+   - Returns: `"Hello from Actix Web!"`
+   - Example: `curl http://localhost:8083/`
+
+2. **GET /health** - Health check endpoint
+   - Returns: `"OK"`
+   - Example: `curl http://localhost:8083/health`
+
+3. **GET /api/name/{name}** - Dynamic route with path parameter
+   - Returns: `"Hello, {name}!"`
+   - Example: `curl http://localhost:8083/api/name/World`
+   - Response: `"Hello, World!"`
+
 ## Network Configuration
 
 This template uses the `iotnetwork` external network for Traefik integration. Make sure this network exists on your server:
